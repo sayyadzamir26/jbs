@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://controller.tworks.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://controller.tworks.com" xmlns:intf="http://controller.tworks.com" xmlns:tns1="http://domain.tworks.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://controller.tworks.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://domain.tworks.com"/>
+   <element name="addCity">
+    <complexType>
+     <sequence>
+      <element name="_city" type="tns1:City"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="addCityResponse">
+    <complexType>
+     <sequence>
+      <element name="addCityReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteCity">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="deleteCityResponse">
+    <complexType>
+     <sequence>
+      <element name="deleteCityReturn" type="xsd:boolean"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCity">
+    <complexType>
+     <sequence>
+      <element name="id" type="xsd:int"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getCityResponse">
+    <complexType>
+     <sequence>
+      <element name="getCityReturn" type="tns1:City"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="getAllCity">
+    <complexType/>
+   </element>
+   <element name="getAllCityResponse">
+    <complexType>
+     <sequence>
+      <element maxOccurs="unbounded" name="getAllCityReturn" type="tns1:City"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://domain.tworks.com" xmlns="http://www.w3.org/2001/XMLSchema">
+   <complexType name="City">
+    <sequence>
+     <element name="circle_code" type="xsd:int"/>
+     <element name="city_name" nillable="true" type="xsd:string"/>
+     <element name="delete_flag" nillable="true" type="xsd:string"/>
+     <element name="id" type="xsd:int"/>
+     <element name="state_name" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="getCityResponse">
+
+      <wsdl:part element="impl:getCityResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getCityRequest">
+
+      <wsdl:part element="impl:getCity" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllCityRequest">
+
+      <wsdl:part element="impl:getAllCity" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addCityRequest">
+
+      <wsdl:part element="impl:addCity" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="addCityResponse">
+
+      <wsdl:part element="impl:addCityResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteCityResponse">
+
+      <wsdl:part element="impl:deleteCityResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="getAllCityResponse">
+
+      <wsdl:part element="impl:getAllCityResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="deleteCityRequest">
+
+      <wsdl:part element="impl:deleteCity" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="CityServiceImpl">
+
+      <wsdl:operation name="addCity">
+
+         <wsdl:input message="impl:addCityRequest" name="addCityRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:addCityResponse" name="addCityResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteCity">
+
+         <wsdl:input message="impl:deleteCityRequest" name="deleteCityRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:deleteCityResponse" name="deleteCityResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCity">
+
+         <wsdl:input message="impl:getCityRequest" name="getCityRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getCityResponse" name="getCityResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllCity">
+
+         <wsdl:input message="impl:getAllCityRequest" name="getAllCityRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:getAllCityResponse" name="getAllCityResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="CityServiceImplSoapBinding" type="impl:CityServiceImpl">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="addCity">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="addCityRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="addCityResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="deleteCity">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="deleteCityRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="deleteCityResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getCity">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getCityRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getCityResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="getAllCity">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="getAllCityRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="getAllCityResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="CityServiceImplService">
+
+      <wsdl:port binding="impl:CityServiceImplSoapBinding" name="CityServiceImpl">
+
+         <wsdlsoap:address location="http://localhost:8080/JobNotifiySOAP/services/CityServiceImpl"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
